@@ -21,7 +21,7 @@ class TestArchiver(unittest.TestCase):
         self.archiver.scan_archives()
         archives_for_channel = self.archiver.archives_for_channel
         data = self.archiver.get('XF:23IDA-VA:0{DP:1-IP:1}P-I', '2013-08-11', '2013-08-12')
-        print data
+        print(data)
         self.assertTrue('EXAMPLE:DOUBLE_SCALAR{TD:1}' in archives_for_channel)
         self.assertTrue('EXAMPLE:INT_WAVEFORM' in archives_for_channel)
         self.assertTrue('EXAMPLE:ENUM_SCALAR' in archives_for_channel)

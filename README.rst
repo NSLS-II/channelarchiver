@@ -16,7 +16,7 @@ You then fetch data with the ``archiver.get()`` method:
 .. code:: python
 
     >>> data = archiver.get('XF:23IDA-VA:0{DP:1-IP:1}P-I', '2013-08-11', '2014-08-12')
-    >>> print data
+    >>> print(data)
                    time  value    status     severity
                    2014-06-28 22:11:53      0  NO_ALARM  ARCHIVE_OFF
 
@@ -55,9 +55,9 @@ data objects back:
 
     >>> channels = ['XF:23IDA-VA:0{DP:1-IP:1}P-I', ' XF:23IDA-VA:0{DP:1-CCG:1}P-I']
     >>> x, y = archiver.get(channels, '2013-08-24 09:00', '2014-08-24 19:00')
-    >>> print x.values
+    >>> print(x.values)
     [ 0.0]
-    >>> print y.values
+    >>> print(y.values)
     []
 
 Times and timezones
