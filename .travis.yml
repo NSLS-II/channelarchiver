@@ -5,7 +5,7 @@ python:
   - 3.5
 sudo: false
 install:
-  - pip install pytest matplotlib
+  - pip install pytest tzlocal pytest-cov
   - pip install .
 script:
-  - py.test -v
+  - py.test -vrsx --cov channelarchiver
