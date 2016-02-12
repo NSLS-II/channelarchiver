@@ -6,6 +6,7 @@ from channelarchiver import Archiver,  codes, utils, exceptions
 from channelarchiver.models import ChannelData, ArchiveProperties
 from tests.mock_archiver import MockArchiver
 import datetime
+import pytest
 
 utc = utils.UTC()
 local_tz = utils.local_tz
@@ -20,8 +21,12 @@ class TestArchiver(unittest.TestCase):
     def test_scan_archives_all(self):
         self.archiver.scan_archives()
         archives_for_channel = self.archiver.archives_for_channel
-        data = self.archiver.get('XF:23IDA-VA:0{DP:1-IP:1}P-I', '2013-08-11', '2013-08-12')
-        print(data)
+        try:
+            data = self.archiver.get('XF:23IDA-VA:0{DP:1-IP:1}P-I', '2013-08-11', '2013-08-12')
+            print(data)
+        except exceptions.ChannelNotFound:
+            pytest.skip('Cannot test channel archiver at NSLS2. You are likely'
+                        ' not testing from inside the nsls2 firewall')
         self.assertTrue('EXAMPLE:DOUBLE_SCALAR{TD:1}' in archives_for_channel)
         self.assertTrue('EXAMPLE:INT_WAVEFORM' in archives_for_channel)
         self.assertTrue('EXAMPLE:ENUM_SCALAR' in archives_for_channel)

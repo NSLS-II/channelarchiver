@@ -2,8 +2,7 @@ import unittest
 import datetime
 from channelarchiver import Archiver, utils
 from tests.mock_archiver import MockArchiver
-import nose
-
+import pytest
 
 utc = utils.UTC()
 local_tz = utils.local_tz
@@ -18,7 +17,7 @@ class TestArchiverPlot(unittest.TestCase):
         try:
             import matplotlib
         except ImportError:
-            raise nose.SkipTest("This tests featuring requiring matplotlib.")
+            pytest.skip("This test requires matplotlib.")
         from channelarchiver import plot_channels
         start = datetime.datetime(2012, 1, 1, tzinfo=utc)
         end = datetime.datetime(2013, 1, 1, tzinfo=utc)
